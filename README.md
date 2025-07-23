@@ -69,7 +69,7 @@ python3 Fitts2.0.py --circleAH
 The targets are located on a circle and will appear anti-clockwise.
 
 6. Generate an experiment from a URL :
-If you wish to generate targets from the clickable links of a given web page, simply enter its URL like so :
+   If you wish to generate targets from the clickable links of a given web page, simply enter its URL like so :
 ```bash
 python3 Fitts2.0.py --url https://example.com
 ```
