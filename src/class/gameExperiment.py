@@ -4,7 +4,7 @@ from sensitiveCursor import *
 import json
 
 """
-    This class represent a mini experience without pause's time
+    This class represents a mini experience without pause's time
 """
 
 class GameExperiment(Game):
@@ -180,7 +180,7 @@ class GameExperiment(Game):
         
     def chooseDevice(self):
         '''This menu is the second menu that the user sees
-        This menu will display three type of device (mouse, trackpad and stylus)
+        This menu will display four type of device (mouse, trackpad, stylus, game controller)
         After the device is selected, the chooseMode screen is displayed'''
         
         space_between_images  = 100
@@ -630,6 +630,9 @@ class GameExperiment(Game):
             return pygame.mouse.get_pos()
         else:
             return (self.cursor.x, self.cursor.y)
+        
+    def freezeOutOfBounds(self) :
+        return
 
     def start(self):
         self.running = True

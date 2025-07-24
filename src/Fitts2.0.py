@@ -19,13 +19,13 @@ import pygame
 import math
 
 URLS = {"moodle":"https://moodle-sciences.upmc.fr/moodle-2021/",\
-        #"wikipedia":"https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal",\
-        #"google_search":"https://www.google.com/search?channel=fs&client=ubuntu&q=wikipedia",\
-        #"amazon":"https://www.amazon.fr/gp/bestsellers/?ref_=nav_cs_bestsellers",\
-        #"bnp":"https://mabanque.bnpparibas/"
-        }
+        "wikipedia":"https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal",\
+        "google_search":"https://www.google.com/search?channel=fs&client=ubuntu&q=wikipedia",\
+        "amazon":"https://www.amazon.fr/gp/bestsellers/?ref_=nav_cs_bestsellers",\
+        "bnp":"https://mabanque.bnpparibas/"
+        } #NB : le lien moodle n'existe plus car upmc a changé de nom depuis.
 
-def getURL(i):
+def getURL(i): #jamais appelé
     if not sys.argv[i] in URLS.keys():
         raise Exception(sys.argv[i] + " not found in the url examples")
     return URLS[sys.argv[i]]
@@ -52,38 +52,38 @@ def main():
     game = None
     
     if not '--file' in sys.argv and not '--url' in sys.argv:
-        if '--model' in sys.argv:
+        if '--model' in sys.argv: #--model : spécifier fichier pkl
             if os.path.isfile(model_filename):
-                experiments = readModel(model_filename, maxTrials = 10)
+                experiments = readModel(model_filename, maxTrials = 10) #To Do : check readModel
             else:
                 experiments = generateModel(URLS, WIDTH, HEIGHT, filename = model_filename, maxTrials = 10)
                 
         #-------Using a specific parameter for an experience will save on previous file corresponding to the experiment name-------
         elif '--random' in sys.argv:
-            experiments = [CircleRandomExp(WIDTH, HEIGHT, 
+            experiments = [CircleRandomExp(WIDTH, HEIGHT, #cercles aléatoires
                 'Circle Random with r = 30, distance = 300', 
                 0, maxTrials = 20, target_radius = 30, distance = 300,dx_sens = 1, dy_sens = 1, target_color = Colors.RED, buffer = 30)]
             saveExperiment(experiments[0], 'experiments\Random_R20_D300.pkl')
             
-        elif '--lineH' in sys.argv:
+        elif '--lineH' in sys.argv: #ligne horizontale
             experiments = [TwoTargetsExp(WIDTH, HEIGHT,
                 'Two Targets with r = 30, distance = 500, rad = 0',
                 0,500, target_radius = 30)]
             saveExperiment(experiments[0], 'experiments\HorizontalTwoTargets_R30_D500.pkl')
             
-        elif '--lineV' in sys.argv:
+        elif '--lineV' in sys.argv: #ligne verticale
             experiments = [TwoTargetsExp(WIDTH, HEIGHT,
                 'Two Targets with r = 30, distance = 500, rad = PI/2',
                 math.pi/2,500, target_radius = 30)]
             saveExperiment(experiments[0], 'experiments\VerticalTwoTargets_R30_D500.pkl')
             
-        elif '--circleH' in sys.argv:
+        elif '--circleH' in sys.argv: #cercle sens horaire
             experiments = [CircleExp(WIDTH, HEIGHT,
                 'Two Targets with r = 30, distance = 500, nb_of_target = 25',
                 25,200, target_radius = 30, maxTrials = 26, way_H = True)]
             saveExperiment(experiments[0], 'experiments\Circle_R30_D200_N25_H.pkl')
             
-        elif '--circleAH' in sys.argv:
+        elif '--circleAH' in sys.argv: #cercle sens antihoraire
             experiments = [CircleExp(WIDTH, HEIGHT,
                 'Two Targets with r = 30, distance = 500, nb_of_target = 25',
                 25,200, target_radius = 30, maxTrials = 26, way_H = False)]

@@ -466,7 +466,7 @@ class DistractorExp(Experiment):
         self.data['number_of_targets'] = nb_target
         self.data['radius of the circle'] = rad_circle
         
-def saveExperiment(exp, filename = ''):
+def saveExperiment(exp, filename = ''): #créer un fichier qui charge le layout
     if not isinstance(exp, Experiment):
         raise Exception("exp must be an experiment")
         
@@ -476,7 +476,7 @@ def saveExperiment(exp, filename = ''):
     with open(filename, 'ab') as f:
         pickle.dump(exp, f)
         
-def loadExperiment(filename):
+def loadExperiment(filename): #à partir du fichier picke recréer l'expérimentation
     f = open(filename, 'rb')
     experiment = pickle.load(f)
     f.close()

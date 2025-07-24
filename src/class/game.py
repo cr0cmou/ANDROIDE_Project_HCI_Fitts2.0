@@ -151,7 +151,7 @@ class Game :
             del self.listener[l]
             
     def addListenerDrawable(self, ld):
-        '''Add a Listener that is also a Drawable (that can be see on screen)'''
+        '''Add a Listener that is also a Drawable (that can be seen on screen)'''
         if (hasattr(ld, "__len__")):
             for ld_item in ld:
                 if (not isinstance(ld_item, Drawable) or not isinstance(ld_item, Listener)):
@@ -281,7 +281,7 @@ class Game :
  ###--------------------------- Menu avec les differents fonctions (play, pause, etc) ---------------------------###       
     def menu(self, menu_title, current_mode = 'play'):
         '''This method is called when changing the scene.
-        It resets timer if needed'''
+        It resets the timer if needed'''
         if menu_title == "play":
             if current_mode != "pause":
                 self.barTime.maxtime = 5
@@ -383,10 +383,10 @@ class Game :
     def play(self, mode="", listTarget=[], showTime=True, displayConsolNbOfTarget = True) :
         '''Normal mode
         The user have a certain amount of time to hit the maximum of targets without clicking on the wrong ones.
-        If success, the user get a little amount of time and get +1 in score
-        if not, the user lose a little amount of time and get -1 in score.
+        If successful, the user gets a little amount of time and get +1 in score
+        if not, the user loses a little amount of time and get -1 in score.
         
-        The game is over when the timer gets to 0'''
+        The game is over when the timer hits 0'''
     
         self.running = True
         

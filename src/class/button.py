@@ -7,7 +7,7 @@ class Button(Drawable, Listener):
     def __init__(self, pos, mode, width, height, color, selectedColor, text = "", image = None, textColor = (0,0,0) ):
     
         self.checkPosType(pos)
-        self.pos = pos
+        self.pos = pos #position of the center(?) of the button
         
         if not isinstance(mode, int):
             raise Exception("mode must be of type int")
@@ -49,6 +49,7 @@ class Button(Drawable, Listener):
         self.text_render = self.font.render(self.text , True , self.color)
            
     def isPosType(self, pos):
+        '''Return True if pos is an array of length 2, containing two positive int ; False otherwise.'''
         if len(pos) != 2:
             return False
         if (not isinstance(pos[0], int)) or (not isinstance(pos[1], int)):
@@ -62,6 +63,7 @@ class Button(Drawable, Listener):
             raise Exception("pos must be of type (int, int)")
         
     def isColorType(self, color):
+        '''Return True if pos is an array of length 3, containing three int between 0 and 255 ; False otherwise.'''
         if len(color) != 3:
             return False
         for i in range(3):
@@ -76,6 +78,7 @@ class Button(Drawable, Listener):
             raise Exception("color must be between (0,0,0) and (255, 255, 255)") 
     
     def isInside(self, cursorPos):
+        '''Return True if the cursor is inside the button area ; False otherwise.'''
         xp = cursorPos[0] - self.pos[0]
         yp = cursorPos[1] - self.pos[1]
         largeur = int(self.width)
@@ -84,13 +87,13 @@ class Button(Drawable, Listener):
 
     def draw(self, game):
         
-        xc, yc = pygame.mouse.get_pos()
-        x, y = self.pos
+        xc, yc = pygame.mouse.get_pos() #cursor position
+        x, y = self.pos #button position
         
         tmp_selected = self.isSelected
         
         #if (xc - x < 0 or xc - x > self.width or yc - y < 0 or yc - y > self.height):
-        if self.isInside(pygame.mouse.get_pos()):
+        if self.isInside(pygame.mouse.get_pos()): #if the cursor is inside the button area
             tmp_selected = False
         else:
             tmp_selected = True

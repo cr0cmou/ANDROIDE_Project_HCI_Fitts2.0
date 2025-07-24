@@ -36,6 +36,7 @@ class Cible(Drawable, Listener):
         return 1
 
     def isInside(self, coord):
+        '''Return True if the coordinates given are inside the circle of the target ; False otherwise. '''
         xp = abs(coord[0] - self.x)
         yp = abs(coord[1] - self.y)
         return xp**2 + yp**2 < self.r**2
@@ -71,6 +72,13 @@ class Cible(Drawable, Listener):
                     return ("cible", tmp)
                 else:
                     return("not cible", tmp)
+            else :
+                print("Target missed. Screen frozen for 2 seconds")
+                pygame.event.set_blocked(pygame.MOUSEBUTTONDOWN) #DOES NOT WORK
+                pygame.event.set_blocked(pygame.JOYBUTTONDOWN)
+                pygame.time.wait(2000)
+                pygame.event.set_allowed(pygame.MOUSEBUTTONDOWN)
+                pygame.event.set_allowed(pygame.JOYBUTTONDOWN)
         else:
             if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.JOYBUTTONDOWN:
                 if self.isInside((game.getCursorPos())):
@@ -81,5 +89,11 @@ class Cible(Drawable, Listener):
                         return ("cible", tmp)
                     else:
                         return("not cible", tmp)
-                
+                else :
+                    print("Target missed. Screen frozen for 2 seconds")
+                    pygame.event.set_blocked(pygame.MOUSEBUTTONDOWN) #DOES NOT WORK
+                    pygame.event.set_blocked(pygame.JOYBUTTONDOWN)
+                    pygame.time.wait(2000)
+                    pygame.event.set_allowed(pygame.MOUSEBUTTONDOWN)
+                    pygame.event.set_allowed(pygame.JOYBUTTONDOWN)
         

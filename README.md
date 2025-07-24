@@ -69,7 +69,7 @@ python3 Fitts2.0.py --circleAH
 The targets are located on a circle and will appear anti-clockwise.
 
 6. Generate an experiment from a URL :
-   If you wish to generate targets from the clickable links of a given web page, simply enter its URL like so :
+If you wish to generate targets from the clickable links of a given web page, simply enter its URL like so :
 ```bash
 python3 Fitts2.0.py --url https://example.com
 ```
@@ -126,9 +126,10 @@ Bonus : if you wish for the experiment not to be in fullscreen, you may add the 
 
 ## DataAnalysis
 This section explains how to use and analyse the data you've stored up.
+Every experiment, even those aborted, are saved as a JSON file in the **users_data** folder. The review left by the subject at the end of the experiment can be found at the very bottom of the file. To extract your data :
 
-* Put xp data in users_data/saved
-* Go to data_extractor
+* Put xp data in **users_data/saved**
+* Go to **data_extractor**
 * Run :
 ```bash
 python3 mainExt.py PVP_Project &
@@ -141,4 +142,4 @@ python3 mainExt.py PVP_det &
 python3 aggregate.py
 ```
 
-* The data is located in : data_extractor/DATA/export
+* The data is located in : **data_extractor/DATA/export**
