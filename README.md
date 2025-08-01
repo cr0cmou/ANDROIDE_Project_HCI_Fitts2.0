@@ -122,6 +122,10 @@ You may not write more than 20 experiments in a single text file, as it may caus
 
 Note : for reasons undetermined, the random disposition causes a crash. The pause function does not work.
 
+9. Penalty system :
+
+A penalty system is available, and works the following way : when the subject misses a target, the screen freezes for a few seconds. This feature is located in the cible.py file in the **src/class** folder. If you wish to activate it, simply scroll to the action function at bottom of the file and un-comment the commented lines containing the instructions : ```pygame.time.wait(2000)```. Comment these same lines to deactivate it. If you wish the change the length of the screen freeze time, you can modify the number inside the wait function. 2000 = 2 seconds.
+
 Bonus : if you wish for the experiment not to be in fullscreen, you may add the ```--windowed``` option to the command. Be careful however as it may render some experiments more difficult/impossible to fulfill (targets may appear outside of a smaller screen).
 
 ## DataAnalysis
